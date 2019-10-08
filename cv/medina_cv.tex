@@ -168,7 +168,8 @@ Complexes\footnote{\url{https://www.telecom-paris.fr/fr/recherche/recherche-part
 	mixed-criticality systems"}, 11th IEEE Symposium on Industrial Embedded Systems (SIES), Cracovie, 
 	Pollogne, 	2016
 	
-	[5] Medina R., Cucu L.,  \textit{"Work-in-Progress: System-wide DVFS for real-timesystems with 
+	[5] Medina R., Cucu L.,  \textit{"Work-in-Progress: System-wide DVFS for real-time
+systems with 
 	probabilistic parameters"}, 40th IEEE Real-Time Systems Symposium (RTSS), 2019
 	
 \end{itemize}
@@ -179,7 +180,7 @@ Complexes\footnote{\url{https://www.telecom-paris.fr/fr/recherche/recherche-part
 	\item \textbf{Revues audience internationale}
 	
 	[6] Medina R., Borde E. et Pautet L.,  \textit{"Generalized Mixed-Criticality Scheduling for Periodic 
-	Directed Acyclic Graphs"}, IEEE Transations on Computers, \textit{Sous revue}
+	Directed Acyclic Graphs"}, IEEE Transations on Computers, \textbf{\textit{Sous revue}}
 	
 \end{itemize}
 
@@ -191,14 +192,14 @@ Complexes\footnote{\url{https://www.telecom-paris.fr/fr/recherche/recherche-part
 	$\circ$ "System-wide power management for real-time systems", 10th Real-Time Scheduling Open 
 	Problems Seminar (RTSOPS), INRIA, Paris, Juillet 2019
 	
-	\item \textbf{Manifestations d'audience nationale}
-	
-	$\circ$ "Mixed-Criticality scheduling forDirected Acyclic Graphs", Junior Seminar, INRIA, Paris, Mars 
-	2019
-	
 	\item \textbf{Séminaires internes}
 	
-	$\circ$ "Scheduling Mixed-Criticality DAGs on multi-corearchitectures", Journées du LTCI, TELECOM 
+	$\circ$ "Mixed-Criticality scheduling for
+	Directed Acyclic Graphs", Junior Seminar, INRIA, Paris, Mars 
+	2019
+	
+	$\circ$ "Scheduling Mixed-Criticality DAGs on multi-core
+architectures", Journées du LTCI, TELECOM 
 	ParisTech, Paris, Octobre 2018
 	
 	$\circ$ "Scheduling of multi-periodic DAGs on multi-core for mixed-criticality", Séminaire Worsted, CEA 
@@ -218,20 +219,31 @@ Complexes\footnote{\url{https://www.telecom-paris.fr/fr/recherche/recherche-part
 
 Pendant mon doctorat à TELECOM ParisTech j'ai assuré différents Travaux Pratiques (TP) pour une durée de 
 32 heures/an pendant trois ans. Encadrer des TPs n'était pas obligatoire pendant mes années de doctorat 
-mais donnait lieu à un avenant sur le contrat doctoral.
+mais donnait lieu à un avenant sur le contrat doctoral. Comme mon objectif est aussi d'obtenir la qualification 
+après mon doctorat, donner des TPs me permettait d'avoir une première expérience dans l'enseignement 
+supérieur.
 \vspace{.5cm}
 
-L'encadrement des TPs pour l'UE \guillemotleft\ Système d'exploitation et langage C 
-\guillemotright\footnote{https://inf104.wp.imt.fr/} se déroulait au sein de TELECOM ParisTech pour des 
+L'encadrement des TPs pour l'UE \guillemotleft\ 
+Système d'exploitation et langage C 
+\guillemotright\footnote{\url{https://inf104.wp.imt.fr/}} se déroulait au sein de TELECOM ParisTech pour 
+des 
 élèves de première année de cycle d'ingénieur (BAC+3) de l'école. Ces TPs se déroulaient pendant le 
 premier semestre de l'année universitaire pour des groupes d'environ 15-20 personnes et prenaient environ 
 26 heures en total. Les TPs de cette UE s'organisaient dans deux parties principales. La première partie 
-abordait des notions de programmation en C de base, comme la manipulation de chaînes de caractères, 
-boucles, écriture sur des fichiers, allocation mémoire dynamique et quelques structures de données.
+abordait des notions de programmation en C, comme la manipulation de chaînes de caractères, 
+boucles, écriture sur des fichiers, allocation mémoire dynamique et quelques structures de données. La 
+deuxième partie abordait des notions de programmation système, comme la création/synchronisation de 
+processus lourds, l'utilisation de sémaphores et de signaux.
 \vspace{.5cm}
 
-Durant ma thèse j'ai aussi assuré l'encadrement de quelques TPS pour les UEs \guillemotleft\ Systémes 
-Temps Réel Embarqués Critiques \guillemotright
+Les 32 heures d'enseignement étaient complétées par 6 heures d'encadrement des TPs pour l'UE 
+\guillemotleft\ Systémes Temps Réel Embarqués Critiques 
+\guillemotright\footnote{\url{https://strec.wp.imt.fr/}}. Cette UE se déroulait à TELECOM ParisTech mais 
+était destinée à des élèves de Master 2 d'autres universités comme Paris 6 (Master SAR) et Paris 11 (Master 
+SETI/COMASIC). Ces TPs se déroulaient pendant le premier semestre de l'année universitaire pour des 
+groupes d'entre 10 et 20 personnes. Ces TPs abordaient des notions de systèmes temps-réel avec de la 
+programmation RT-POSIX, ainsi que la manipulation d'outils de modélisation et génération de code.
 
 %----------------------------------------------------------------------------------------
 \subsection{Recherche}
@@ -239,6 +251,37 @@ Temps Réel Embarqués Critiques \guillemotright
 
 \textbf{Optimisation de la consommation énergétique pour des systèmes embarqués temps-réel}
 
+Dans le cadre de mon post-doctorat à l'INRIA de Paris au sein de l'équipe Kopernic, je me suis intéressé à 
+des problèmes de consommation énergétique pour des systèmes temps-réel. Ce problème est 
+particulièrement intéressant puisque la plupart des systèmes temps-réels sont utilisés dans des 
+architectures embarquées alimentées par des batteries. Limiter la consommation énergétique tout en 
+respectant les contraintes temporelles de ses systèmes représente une vrai nécessité dans le monde 
+académique et industriel.
+
+Les méthodes actuelles pour limiter la consommation énergétique sur les systèmes temps-réels sont 
+souvent basées sur le changement de fréquence du processeur. Les processeurs modernes offrent la 
+possibilité de réduire la tension fournie aux c\oe{}urs, ce qui réduit leur fréquence d'exécution et diminue la 
+consommation énergétique. Cependant, avec une fréquence moins élevée, le temps d'exécution  des 
+programmes augmente. La problématique est donc de trouver des fréquences qui permettent de réduire la 
+consommation en énergie tout en respectant les contraintes temporelles des programmes.
+
+
+Le changement de fréquence du processur est possible dû au fait que les systèmes temps-réels sont 
+dimensionnés en respectant le pire cas d'exécution pour les programmes. Néanmoins, le pire cas arrive 
+dans des situation extrêmement rares et sans mécanisme de réduction énergétique, ces ressources sont 
+gaspillées.
+\vspace{.5cm}
+
+
+(Résultats obtenus)
+
+Pendant mon post-doctorat 
+
+
+(Diffusion résultats)
+
+
+(Encadrement)
 
 \textbf{Déploiement de systèmes à flots de données pour architectures multi-c\oe{}urs en criticité mixte}
 
