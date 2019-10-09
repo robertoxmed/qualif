@@ -251,49 +251,65 @@ programmation RT-POSIX, ainsi que la manipulation d'outils de modélisation et g
 
 \textbf{Optimisation de la consommation énergétique pour des systèmes embarqués temps-réel}
 
-Dans le cadre de mon post-doctorat à l'INRIA de Paris au sein de l'équipe Kopernic, je me suis intéressé à 
-des problèmes de consommation énergétique pour des systèmes temps-réel. Ce problème est 
-particulièrement intéressant puisque la plupart des systèmes temps-réels sont utilisés dans des 
-architectures embarquées alimentées par des batteries. Limiter la consommation énergétique tout en 
-respectant les contraintes temporelles de ses systèmes représente une vrai nécessité dans le monde 
+Dans le cadre de mon post-doctorat à l'INRIA de Paris, au sein de l'équipe Kopernic, je me suis intéressé à 
+des problèmes de consommation énergétique pour des systèmes temps-réel. Les systèmes temps-réels 
+sont modélisés grâce à des tâches périodiques qui doivent être exécutées avant une échéance. Ce problème 
+est particulièrement intéressant puisque la plupart des systèmes temps-réels sont utilisés dans sur des 
+architectures embarquées alimentées par des batteries et souvent déployés dans des environnements 
+dangereux. Limiter la consommation énergétique tout en respectant les contraintes temporelles de ses 
+systèmes représente une vrai nécessité dans le monde 
 académique et industriel.
 
 Les méthodes actuelles pour limiter la consommation énergétique sur les systèmes temps-réels sont 
-souvent basées sur le changement de fréquence du processeur. Les processeurs modernes offrent la 
-possibilité de réduire la tension fournie aux c\oe{}urs, ce qui réduit leur fréquence d'exécution et diminue la 
-consommation énergétique. Cependant, avec une fréquence moins élevée, le temps d'exécution  des 
-programmes augmente. La problématique est donc de trouver des fréquences qui permettent de réduire la 
-consommation en énergie tout en respectant les contraintes temporelles des programmes.
+souvent basées sur le changement de fréquence du processeur (en anglais Dynamic Voltage and Frequency 
+Scaling : DVFS). Les processeurs modernes offrent la 
+possibilité de réduire la tension fournie aux c\oe{}urs d'exécution, ce qui réduit leur fréquence d'exécution et 
+diminue la consommation énergétique. Cependant, avec une fréquence moins élevée, le temps d'exécution  
+des programmes augmente. Le problème consiste alors à trouver des fréquences adaptées qui réduisent le 
+plus possible  la consommation en énergie tout en respectant les contraintes temporelles des programmes.
 
 
-Le changement de fréquence du processur est possible dû au fait que les systèmes temps-réels sont 
-dimensionnés en respectant le pire cas d'exécution pour les programmes. Néanmoins, le pire cas arrive 
-dans des situation extrêmement rares et sans mécanisme de réduction énergétique, ces ressources sont 
-gaspillées.
+Le changement de fréquence du processur devient possible dû au fait que les systèmes temps-réels sont 
+dimensionnés en prenant en compte le pire cas d'exécution pour les programmes. Néanmoins, le pire cas 
+arrive dans des situation extrêmement rares et sans mécanisme de réduction énergétique, les ressources 
+allouées sont gaspillées.
 \vspace{.5cm}
 
 
-(Résultats obtenus)
+%(Résultats obtenus)
+Le projet de recherche du post-doctorat s'est organisé en deux parties. Dans un premier temps on a 
+démontré, grâce des expérimentations, que l'hypothèse par rapport aux temps d'exécution des programmes 
+et les fréquences du processeur n'est pas toujours correcte. En effet, les méthodes DVFS les plus répandues 
+et utilisées sur des vrais systèmes d'exploitation, supposent que le temps d'exécution est complètement 
+proportionnel à la fréquence du processeur. Néanmoins, ce modèle ne considère pas le fait que les 
+programmes peuvent nécessiter des ressources externes au processeur, comme la mémoire ou d'autres 
+périphériques.
 
-Pendant mon post-doctorat 
+L'objectif principal de ce projet de recherche consiste à proposer une méthode d'ordonnancement qui prend 
+en compte un modèle probabiliste sur les temps d'exécution des programmes pour minimiser la 
+consommation énergétique des systèmes temps-réels. En ayant connaissance sur la distribution des temps 
+d'exécution des programmes grâce au modèle probabiliste, on est capable d'améliorer 
 
 
 (Diffusion résultats)
 
+Les premiers résultats sur la variabilité du temps d'exécution  des programmes par rapport à la fréquence 
+des processeurs et la mémoire ont donné lieu à un article court présenté à Real-Time Systems Symposium
 
 (Encadrement)
 
 \textbf{Déploiement de systèmes à flots de données pour architectures multi-c\oe{}urs en criticité mixte}
 
-I spent three years working at Télécom ParisTech under the supervision of Laurent Pautet 0 and Etienne 
-Borde 1 . The
+Le projet de recherche de mon doctorat était centré sur des systèmes à criticité-mixte ayant des flots de 
+données s'exécutant sur des architectures multi-c\oe{}urs. Le modèle d'exécution en criticité-mixte est un 
+modèle temps-réel où des programmes avec différentes criticitées partagent des ressources matérielles.
+
+. The
 research activity was focused on mixed-criticality (MC) systems that are data-driven (i.e. the system is 
 constrained to
 respect data dependencies) and executed on multi-core architectures. The MC execution model is a 
 real-time model were
-tasks with different criticalities share a common execution platform. These tasks have stringent time 
-constraints and are
-modeled as periodic events that need to be completed before a certain deadline. While there have been 
+tasks with different criticalities share a common execution platform.  While there have been 
 contributions
 proposing scheduling policies for MC tasks on multi-core architectures, few works have considered data 
 dependencies
