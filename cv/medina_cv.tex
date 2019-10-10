@@ -249,11 +249,17 @@ programmation RT-POSIX, ainsi que la manipulation d'outils de modélisation et g
 \subsection{Recherche}
 %----------------------------------------------------------------------------------------
 
-\textbf{Optimisation de la consommation énergétique pour des systèmes embarqués temps-réel}
+Mes projets de recherche ont été centrées sur des méthodes d'ordonnancement pour les systèmes 
+embarqués temps-réels modernes. Les systèmes temps-réels sont souvent représentés par des tâches 
+périodiques qui doivent être exécutés avant une échéance figée dans le temps. Une 
+tâche temps-réel peut correspondre à un bout de code, une routine, un programme, entre autres.
+\vspace{.5cm}
+
+\textbf{I) Optimisation de la consommation énergétique pour des systèmes embarqués temps-réel}
+\vspace{.5cm}
 
 Dans le cadre de mon post-doctorat à l'INRIA de Paris, au sein de l'équipe Kopernic, je me suis intéressé à 
-des problèmes de consommation énergétique pour des systèmes temps-réel. Les systèmes temps-réels 
-sont modélisés grâce à des tâches périodiques qui doivent être exécutées avant une échéance. Ce problème 
+des problèmes de consommation énergétique pour des systèmes temps-réel. Ce problème 
 est particulièrement intéressant puisque la plupart des systèmes temps-réels sont utilisés dans sur des 
 architectures embarquées alimentées par des batteries et souvent déployés dans des environnements 
 dangereux. Limiter la consommation énergétique tout en respectant les contraintes temporelles de ses 
@@ -297,45 +303,48 @@ Les premiers résultats sur la variabilité du temps d'exécution  des programme
 des processeurs et la mémoire ont donné lieu à un article court présenté à Real-Time Systems Symposium
 
 (Encadrement)
+\vspace{.5cm}
 
-\textbf{Déploiement de systèmes à flots de données pour architectures multi-c\oe{}urs en criticité mixte}
+\textbf{II) Déploiement de systèmes à flots de données pour architectures multi-c\oe{}urs en criticité-mixte}
+\vspace{.5cm}
 
-Le projet de recherche de mon doctorat était centré sur des systèmes à criticité-mixte ayant des flots de 
-données s'exécutant sur des architectures multi-c\oe{}urs. Le modèle d'exécution en criticité-mixte est un 
-modèle temps-réel où des programmes avec différentes criticitées partagent des ressources matérielles.
+Le projet de recherche de mon doctorat était centré sur le modèle d'exécution à criticité-mixte. Le modèle à 
+criticité-mixte est un modèle temps-réel où des tâches de différentes \textit{criticitées} partagent des 
+ressources matérielles. La criticité d'une tâche est définie par son importance suite à une défaillance : une 
+tâche à haute criticité peut avoir des conséquences économiques ou humaines très importantes si elle est 
+défaillante.
 
-. The
-research activity was focused on mixed-criticality (MC) systems that are data-driven (i.e. the system is 
-constrained to
-respect data dependencies) and executed on multi-core architectures. The MC execution model is a 
-real-time model were
-tasks with different criticalities share a common execution platform.  While there have been 
-contributions
-proposing scheduling policies for MC tasks on multi-core architectures, few works have considered data 
-dependencies
-and tend to over-dimension systems. Two main objectives were tackled during my thesis: (i) the definition of 
-new efficient
-scheduling methods for MC and data-driven systems; and (ii) the analysis of availability for the non-critical 
-components.
-The scheduling problem of MC tasks with data dependencies is very difficult (NP-hard). The difficulty comes 
-from the
-fact that MC systems need to be scheduled under different execution modes, i.e. deadlines, periods, data 
-dependencies
-need to be respected for all these execution modes. At the same time, these constraints need to be respected 
-when the
-system changes its execution mode. The modeling of our research context led to the definition of a task 
-model called
-Mixed-Criticality Directed Acyclic Graph (MC-DAG). Scheduling approaches capable of allocating MC-DAGs 
-into multi-core
-architectures have been developed in the literature but show relevant short-comes in terms of acceptance 
-rate (i.e. number
-of schedulable tasks sets) and resource usage. In order to lift the limitations we have characterized a 
-sufficient property to
-have safe mode transitions on MC systems. When this condition is respected, the system always respects 
-deadlines, even
-when a mode switch occurs. Building upon this property we defined a meta-heuristic to schedule MC-DAGs 
-on multi-core
-architectures. A first improvement considered, was the relaxation on the execution of the most critical tasks 
+Plusieurs contributions sur l'ordonnancement pour ce type de systèmes en architectures  multi-c\oe{}urs 
+existent dans la littérature, néanmoins très peu de travaux ont considéré des tâches avec des contraintes de 
+précédence et ont tendance à surdimensionner les systèmes . Deux axes principaux ont été traités pendant 
+mon doctorat : (i) le développement de nouvelles méthodes efficaces d'ordonnancement en criticité-mixte 
+avec flots de données; et (ii) l'analyse de la disponibilité des composants les moins critiques pour ces 
+systèmes.
+
+Le problème d'ordonnancement des tâches en criticité-mixte avec contraintes de précédence est très 
+difficile (NP-difficile). La difficulté vient du fait que les systèmes à criticité-mixte ont besoin d'être 
+ordonnancés sous différents modes d'exécution, c.à.d. que les échéances, périodes et contraintes de 
+précédence doivent être respectées dans tous ces modes. À ce point, ce rajoute le fait que ces contraintes 
+doivent être respectées pendant la transition des modes d'exécution. On a défini un modèle d'exécution 
+appelé Mixed-Criticality Directed Acyclic Graph (MC-DAG), qui prend en compte notre contexte de 
+recherche. Des approches existantes sont capables d'ordonnancer des MC-DAG sur des architectures 
+multi-c\oe{}urs  mais elles ont des limitation importantes concernant leur taux d'acceptation (c.à.d. le 
+nombre de lots de tâches qui peuvent être ordonnancées) et leur utilisation des ressources. Pour résoudre 
+ces limitations nous avons caractérisé une condition suffisante pour avoir une \textit{transition de modes 
+sûre}. Quand cette condition est respectée, le système va systématiquement respecter les échéances, même 
+quand le système est dans une transition de modes. En nous appuyant sur ce résultat, nous avons défini une 
+méta-heuristique pour ordonnancer des MC-DAGs sur des architectures multi-coeurs. Une première 
+amélioration considérée par rapport à l'état de l'art, a été la relaxation sur l'exécution des tâches les plus 
+critiques. En appliquant ce principe nous avons réussi à réduire le temps de réponse des tâches les moins 
+critiques, ce qui améliore le taux d'acceptation.
+
+
+Ces travaux de recherches ont donné lieu à des articles publiés dans des conférences internationales. Un 
+papier de journal est actuellement sous revue. Des communications internes ont été données aussi au sein 
+de TELECOM ParisTech et dans des séminaires organisés par le CEA List.
+
+
+ A first improvement considered, was the relaxation on the execution of the most critical tasks 
 allowing us to
 reduce the response time of the less-critical tasks which improved schedulability. Experimental results 
 presenting our gains
