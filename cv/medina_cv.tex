@@ -297,7 +297,7 @@ consommation énergétique des systèmes temps-réels. En ayant connaissance sur
 d'exécution des programmes grâce au modèle probabiliste, on est capable d'améliorer 
 
 
-(Diffusion résultats)
+%(Diffusion résultats)
 
 Les premiers résultats sur la variabilité du temps d'exécution  des programmes par rapport à la fréquence 
 des processeurs et la mémoire ont donné lieu à un article court présenté à Real-Time Systems Symposium
@@ -319,94 +319,57 @@ existent dans la littérature, néanmoins très peu de travaux ont considéré d
 précédence et ont tendance à surdimensionner les systèmes . Deux axes principaux ont été traités pendant 
 mon doctorat : (i) le développement de nouvelles méthodes efficaces d'ordonnancement en criticité-mixte 
 avec flots de données; et (ii) l'analyse de la disponibilité des composants les moins critiques pour ces 
-systèmes.
-
-Le problème d'ordonnancement des tâches en criticité-mixte avec contraintes de précédence est très 
-difficile (NP-difficile). La difficulté vient du fait que les systèmes à criticité-mixte ont besoin d'être 
+systèmes. Le problème d'ordonnancement des tâches en criticité-mixte avec contraintes de précédence est 
+très difficile (NP-difficile). La difficulté vient du fait que les systèmes à criticité-mixte ont besoin d'être 
 ordonnancés sous différents modes d'exécution, c.à.d. que les échéances, périodes et contraintes de 
 précédence doivent être respectées dans tous ces modes. À ce point, ce rajoute le fait que ces contraintes 
-doivent être respectées pendant la transition des modes d'exécution. On a défini un modèle d'exécution 
-appelé Mixed-Criticality Directed Acyclic Graph (MC-DAG), qui prend en compte notre contexte de 
-recherche. Des approches existantes sont capables d'ordonnancer des MC-DAG sur des architectures 
-multi-c\oe{}urs  mais elles ont des limitation importantes concernant leur taux d'acceptation (c.à.d. le 
-nombre de lots de tâches qui peuvent être ordonnancées) et leur utilisation des ressources. Pour résoudre 
-ces limitations nous avons caractérisé une condition suffisante pour avoir une \textit{transition de modes 
-sûre}. Quand cette condition est respectée, le système va systématiquement respecter les échéances, même 
-quand le système est dans une transition de modes. En nous appuyant sur ce résultat, nous avons défini une 
-méta-heuristique pour ordonnancer des MC-DAGs sur des architectures multi-coeurs. Une première 
-amélioration considérée par rapport à l'état de l'art, a été la relaxation sur l'exécution des tâches les plus 
-critiques. En appliquant ce principe nous avons réussi à réduire le temps de réponse des tâches les moins 
-critiques, ce qui améliore le taux d'acceptation.
+doivent être respectées pendant la transition des modes d'exécution.
+
+% Résultats
+\vspace{.5cm}
+On a défini un modèle d'exécution appelé Mixed-Criticality Directed Acyclic Graph (MC-DAG), qui prend en 
+compte notre contexte de recherche. Des approches existantes sont capables d'ordonnancer des MC-DAG 
+sur des architectures multi-c\oe{}urs  mais elles ont des limitation importantes concernant leur taux 
+d'acceptation (c.à.d. le nombre de lots de tâches qui peuvent être ordonnancées) et leur utilisation des 
+ressources. Pour résoudre ces limitations nous avons caractérisé une condition suffisante pour avoir une 
+\textit{transition de modes sûre}. Quand cette condition est respectée, le système va systématiquement 
+respecter les échéances, même pendant une transition de modes. En nous appuyant sur ce résultat, 
+nous avons défini une méta-heuristique pour ordonnancer des MC-DAGs sur des architectures 
+multi-c\oe{}urs. Une première amélioration considérée par rapport à l'état de l'art, a été la relaxation de 
+l'exécution des tâches les plus critiques. En appliquant ce principe nous avons réussi à réduire le temps de 
+réponse des tâches les moins critiques, ce qui améliore le taux d'acceptation. Dans une deuxième partie, on a 
+généralisé la méta-heuristique pour ordonnancer des MC-DAGs avec différentes périodes. Contrairement 
+aux travaux existant, notre approche utilise moins de ressources matérielles puisque des MC-DAGs avec des 
+périodes différentes peuvent partager un même c\oe{}ur d'exécution (ce qui n'était pas le cas avant). Nos 
+résultats expérimentaux montrent que notre approche est beaucoup plus performante en terme de taux 
+d'acceptation.
+
+Le deuxième axe de recherche de ce projet s'intéressait à la disponible des tâches les moins critiques. Les 
+approches les plus répandues dans la littérature des systèmes à criticité-mixte proposent d'arrêter 
+l'exécution des tâches les moins critiques pour permettre le changement de mode de ces systèmes. Cette 
+approche permet d'avoir des bons taux d'acceptation puisque moins de tâches doivent être ordonnancées 
+dans les modes les plus critiques. Néanmoins, dans des systèmes embarqués temps-réels, même les tâches 
+les 
+moins critiques sont très 
+importantes et doivent être exécutées le plus souvent possible. Nous nous sommes donc intéressés au calcul 
+de la disponibilité de ces tâches moins critiques tout en conservant cette hypothèse sur le changement de 
+mode et les tâches les moins critiques. On a voulu rester compatibles avec nos contributions sur 
+l'ordonnancement qui visaient à améliorer les taux d'acceptation. Pour effectuer cette estimation sur la 
+disponibilité, on a défini un modèle de fautes et un mécanisme de recouvrement qui permet de reprendre le 
+mode d'exécution le moins critique et réincorporer les tâches les moins critiques. Avec ces informations on a 
+pu voir qu'effectivement les taux de disponibilité étaient très bas ce qui pose problème dans le domaine 
+industriel des systèmes temps-réel. Pour résoudre ce problème on a étendu le modèle d'exécution en 
+rajoutant deux améliorations : (i) un modèle de propagation de fautes plus détaillé et (ii) l'inclusion de 
+mécanismes de tolérance aux fautes.
 
 
-Ces travaux de recherches ont donné lieu à des articles publiés dans des conférences internationales. Un 
-papier de journal est actuellement sous revue. Des communications internes ont été données aussi au sein 
-de TELECOM ParisTech et dans des séminaires organisés par le CEA List.
-
-
- A first improvement considered, was the relaxation on the execution of the most critical tasks 
-allowing us to
-reduce the response time of the less-critical tasks which improved schedulability. Experimental results 
-presenting our gains
-in terms of acceptance rate were first presented in [RM3]. The generalization to support multiple 
-multi-periodic MC-DAGs
-on a shared multi-core architecture was presented in [RM1]. To support this multi-periodic case, existing 
-works follow a
-federated approach: each MC-DAG will be executed in an exclusive cluster of cores. Our solution follows a 
-global approach:
-vertices of different MC-DAGs can be scheduled on all cores. Again experimental results presented in [RM1] 
-demonstrated
-that our improvements were effective. The final extension to our works is capable of computing schedulers 
-for MC systems
-with an arbitrary number of criticality levels. This generalization is presented in my thesis manuscript [RM5] 
-and will be
-submitted including additional results to a journal in the upcoming weeks [RM6].
-The second topic we were interested in, was the availability of non-critical tasks executing in a MC system. 
-Even if non-
-criticality tasks have low or no impact on the system’s safety, their execution is important for the system’s 
-usability. The
-industry has criticized the MC model because non-critical tasks are often dropped to ensure the 
-schedulability of critical
-tasks in all operational modes. Recent works on MC have proposed different approaches to overcome this 
-limitation by
-extending the most common task model of the literature. In our case, we wanted to perform availability 
-evaluations and
-incorporate availability enhancements that are compatible with the scheduling methods we defined. To 
-perform availability
-evaluations we need to provide sufficient information about the system behavior which led us to the inclusion 
-of a fault
-model and a recovery mechanism for the non-critical tasks. When the task model has this information 
-analytical analysis
-can be performed. As expected, the most common degradation model of MC scheduling delivers a low 
-availability rate for
-non-critical tasks. For this reason, had planned to incorporate availability enhancements. A first 
-enhancements was the
-definition of a more precise fault propagation model, where only data-dependent tasks are interrupted and 
-a mode transition
-to a higher criticality mode occurs when a critical task needs more processing resources. Our evaluations 
-performed in
-[RM2] showed that our fault propagation model was effective. Nevertheless, a common practice in the 
-design of safety-
-critical systems consists in incorporating “robust” tasks or follow certain “safety” design patterns. In [RM2] 
-we demonstrated
-that weakly-hard real-time tasks can be used as a mean to improve availability. In order to obtain availability 
-rate when this
-type of tasks are incorporated in the system, we need to perform system simulations. I defined translations 
-rules to obtain
-probabilistic automata. We first presented these transformation rules for MC systems executing in 
-mono-core processors
-on [RM4], new rules were presented in [RM2] and the generalization of the rules for multiple criticality 
-levels are detailed in
-[RM5].
-All the abovementioned contributions were integrated into an open source framework [RM7]. This 
-framework also includes
-an unbiased generator of MC-DAGs to test our scheduling algorithms and compare them to existing works. 
-The proposed
-contributions are being integrated in the RAMSES tool, a widely used tool for research projects at Télécom 
-ParisTech.
-Extensions about my works related to the scheduling of MC-DAGs are now being implemented by a 
-post-doctoral researcher
-at Télécom ParisTech.
+%(Diffusion résultats)
+\vspace{.5cm}
+Ces travaux de recherches ont donné lieu à des articles publiés dans des conférences internationales [1-4]. 
+Un papier de journal est actuellement sous revue [6]. Un framework 
+open-source\footnote{\url{https://github.com/robertoxmed/MC-DAG}} a été développé pour Des 
+communications internes ont été données aussi au 
+sein de TELECOM ParisTech et dans des séminaires organisés par le CEA List.
 
 
 
